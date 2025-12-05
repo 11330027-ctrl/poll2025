@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>查看投票主題</title>
+</head>
+<body>
+    <h1>{{ poll.subject }}</h1>
+        <p>{{ poll.desc }}</p>
+        <ul>
+            {% for op in option_list %}
+            <li><a href="{% url 'poll_vote' op.id %}">{{ op.title }}</a> - {{ op.vote }} 票</li>
+            {% endfor %}
+        </ul>
+</body>
+</html>
