@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}新增投票主題{% endblock %}
+
+{% block main %}
+<h1>新增投票主題</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="新增">
+    </form>
+{% endblock %}

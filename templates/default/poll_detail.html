@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
-    <title>查看投票主題</title>
-</head>
-<body>
-    <h1>{{ poll.subject }}</h1>
+{% extends "base.html" %}
+
+{% block title %}查看投票主題{% endblock %}
+
+{% block main %}
+<h1>{{ poll.subject }}</h1>
         <p>{{ poll.desc }}</p>
+        <a href="{% url 'option_create' poll.id %}">新增選項</a>
         <ul>
             {% for op in option_list %}
-            <li><a href="{% url 'poll_vote' op.id %}">{{ op.title }}</a> - {{ op.vote }} 票</li>
+            <li>
+                <a href="{% url 'poll_vote' op.id %}">{{ op.title }}</a> - {{ op.vote }} 票
+                <a href="{% url 'option_edit' op.id %}">修改</a>   
+                <a href="{% url 'option_delete' op.id %}">刪除</a>
+            </li>
             {% endfor %}
         </ul>
-</body>
-</html>
+{% endblock %}

@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>投票主題列表</title>
-</head>
-<body>
-    <h1>投票主題列表-ListView</h1>
+{% extends "base.html" %}
+
+{% block title %}投票主題列表{% endblock %}
+
+{% block main %}
+<h1>投票主題列表-ListView</h1>
+    <a herf="{% url 'poll_create' %}">新增投票主題</a>
     <ul>
         {% for poll in poll_list %}
-        <li>{{poll.created}} <a href="{% url 'poll_view' poll.id %}">{{poll.subject}}</a></li>
+        <li>
+            {{poll.created}} 
+            <a href="{% url 'poll_view' poll.id %}">{{poll.subject}}</a>
+                <a href="{% url 'poll_edit' poll.id %}">修改</a>
+                <a href="{% url 'poll_delete' poll.id %}">刪除</a>
+        </li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
